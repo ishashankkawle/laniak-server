@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:mongo="http://www.mulesoft.org/schema/mule/mongo"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/mongo http://www.mulesoft.org/schema/mule/mongo/current/mule-mongo.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
+	
+	<flow name="getProjectIdFromName" doc:id="747c8a09-fe10-46e6-a06c-547d6344f021" >
+		<set-variable value="#[attributes.queryParams.name]" doc:name="Set Variable" doc:id="8348895b-f273-48e0-87cf-420108f2eb3f" variableName="projectName"/>
+		<db:select doc:name="Select" doc:id="31e020ae-6cb9-4c5d-843d-9e97f49397e2" config-ref="rdbms_master_db_config">
+			<reconnect />
+			<db:sql><![CDATA[SELECT "ProjectId" FROM project_master WHERE "ProjectName" = :name]]></db:sql>
+			<db:input-parameters><![CDATA[#[{'name' : vars.projectName}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="1ad4c999-2143-4388-8d4f-0ee9656a923b">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="getProjectListForUser" doc:id="4299777e-4d69-429c-bfac-a8ea206c655b" >
+		<db:select doc:name="Select" doc:id="2a38700c-a197-4ac5-a317-7c02faf61a4f" config-ref="rdbms_master_db_config">
+			<reconnect />
+			<db:sql ><![CDATA[SELECT DISTINCT "ProjectId" , "ProjectName" FROM VIEW_USERPROJECTMAP WHERE "UserId" = :userId ]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'userId' : attributes.queryParams.userId}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="281bb683-803e-4f83-873e-66131119cf73" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="getCommonProjectsListForUsers" doc:id="0523ea8b-ebd3-4d9d-ab18-f19b8ed90a6a" >
+		<set-variable value="#[attributes.queryParams.userId]" doc:name="Set userId" doc:id="24d09053-c213-4581-88ea-69f395f3bda1" variableName="userId"/>
+		<set-variable value="#[attributes.queryParams.otherUserId]" doc:name="Set otherUserId" doc:id="7decf639-b1c9-4692-b413-46de204cd543" variableName="otherUserId"/>
+		<db:select doc:name="Select" doc:id="312a7567-12ad-4b6c-9228-3dbfd4263c63" config-ref="rdbms_master_db_config">
+			<reconnect />
+			<db:sql><![CDATA[SELECT DISTINCT vupm.pjid1 as projectId ,  vupm.pjnm1 as projectName FROM (SELECT vu1."ProjectId" pjid1, vu1."ProjectName" pjnm1 FROM VIEW_USERPROJECTMAP AS vu1 WHERE "UserId" = :userId )vupm JOIN (SELECT vu2."ProjectId" pjid2 , vu2."ProjectName" pjnm2 FROM VIEW_USERPROJECTMAP vu2 WHERE "UserId" = :otherUserId )vupm1 ON (vupm.pjid1::TEXT = vupm1.pjid2)]]></db:sql>
+			<db:input-parameters><![CDATA[#[{'userId' : vars.userId , 'otherUserId' : vars.otherUserId}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="316958b5-aa0e-44cd-8637-6194f4f8b726">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="getAllProjects" doc:id="55ff61cf-7db4-478c-a362-4709c932b0ad" >
+		<db:select doc:name="Select" doc:id="0212ee7b-2503-4465-b137-75c287908dd7" config-ref="rdbms_master_db_config">
+			<reconnect />
+			<db:sql ><![CDATA[SELECT * FROM project_master]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="61c52645-6480-4d90-83fb-3de6e28424e8" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload map ( payload01 , indexOfPayload01 ) -> {
+	projectId: payload01.ProjectId as String default "",
+	projectName: payload01.ProjectName default ""
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="mainProjectFlow" doc:id="ec714729-4603-40a3-9725-f50315017cd9" >
+		<logger level="INFO" doc:name="Logger" doc:id="95f920f8-0965-4428-a23e-1f9cdf0da70e" />
+		<choice doc:name="Choice" doc:id="d8c2f880-8f22-4627-b4be-7f11eba872cc" >
+			<when expression="#[sizeOf(attributes.queryParams) == 2]">
+				<flow-ref doc:name="Get common project list for users" doc:id="f5f2e5a6-7daf-4cc8-845c-410d1a687cf1" name="getCommonProjectsListForUsers"/>
+			</when>
+			<when expression="#[sizeOf(attributes.queryParams) == 1]" >
+				<choice doc:name="Choice" doc:id="87647dca-25bd-4158-a56f-39588ed3b6c9" >
+					<when expression="#[attributes.queryParams.name != null]">
+						<flow-ref doc:name="Get Project ID from Project Name" doc:id="856a09f3-1eb5-4dc8-b82c-91d125d7e1cd" name="getProjectIdFromName"/>
+					</when>
+					<otherwise >
+						<flow-ref doc:name="Get Project List for User Id" doc:id="428973e8-2858-499b-8cf3-9fd6cbb7d4be" name="getProjectListForUser"/>
+					</otherwise>
+				</choice>
+			</when>
+			<otherwise >
+				<flow-ref doc:name="Get all projects" doc:id="bcec5cae-f54b-42c9-9616-bcf186af4d27" name="getAllProjects"/>
+			</otherwise>
+		</choice>
+		<ee:transform doc:name="Transform Message" doc:id="94971a04-cf42-47d5-90e0-0f94d2e08cbd" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="createNewProject" doc:id="2d8f6554-c2b3-4334-bc20-0be6e539eecb" >
+		<set-variable value="#[payload]" doc:name="Set backup_payload" doc:id="814ab2d7-1b69-4645-8c27-933d3278c8f1" variableName="backup_payload"/>
+		<flow-ref doc:name="generateNewId" doc:id="73244f5c-245e-4328-823a-6cbc99ae48bc" name="generateNewId"/>
+		<set-variable value="#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;	projectId : payload.nextval,&#10;	projectName : vars.backup_payload.title,&#10;	userId : vars.backup_payload.userId&#10;}]" doc:name="Reset backup_payload" doc:id="666475fd-1ef2-4905-aaa2-aea84bb3ba7a" variableName="backup_payload"/>
+		<try doc:name="Try" doc:id="0fa8389e-721a-4a0b-8d95-b873a1e96dde" transactionalAction="ALWAYS_BEGIN">
+			<db:insert doc:name="Project_Master Insert" doc:id="cd769c0e-97bf-434c-a4fe-4de114e73363" config-ref="rdbms_master_db_config">
+						<db:sql><![CDATA[INSERT INTO project_master ("ProjectId", "ProjectName", "DateCreated") VALUES ( :projectid , :projectname , CURRENT_DATE) ]]></db:sql>
+						<db:input-parameters><![CDATA[#[{
+	"projectid" : vars.backup_payload.projectId,
+	"projectname" : vars.backup_payload.projectName
+}]]]></db:input-parameters>
+					</db:insert>
+			<ee:transform doc:name="Transform Message" doc:id="00b99d9b-015a-4516-902e-d0fdad142adb" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+vars.backup_payload]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<flow-ref doc:name="createNewUserProjectMap" doc:id="b6157fce-dfb7-488a-bf68-9ce6886fb149" name="createNewUserProjectMap"/>
+		</try>
+		<ee:transform doc:name="Transform Message" doc:id="256d645f-c4a4-48c7-a0f7-2f52f383291a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="deleteProjectFlow" doc:id="0a662d38-d80b-485f-b85c-f1a456b31c9e" >
+		<set-variable value="#[payload]" doc:name="Set backup_payload_proj" doc:id="abae5ae1-1fea-4aff-869e-55409538af90" variableName="backup_payload_proj" />
+		<db:select doc:name="Select" doc:id="a9d8233c-0ba3-4141-92d0-df414e8e33a0" config-ref="rdbms_master_db_config">
+			<db:sql ><![CDATA[SELECT "TaskId" from task_master WHERE "ProjectId" = :projectid]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	"projectid" : vars.backup_payload_proj.projectId
+}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="574ba25e-7a2e-4fba-8eb3-69209d5a393a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload map($.TaskId)]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<foreach doc:name="For Each" doc:id="f3c9cc4f-7376-44f6-877b-773f77865b6c" >
+			<ee:transform doc:name="Transform Message" doc:id="e8e73ef1-0fe4-40f3-a385-bc098f25e9ab" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"ID" : payload
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<try doc:name="Try" doc:id="9a5e01fe-4842-45dc-99cf-9b03fd30370d" transactionalAction="ALWAYS_BEGIN">
+				<flow-ref doc:name="deleteTaskFlow" doc:id="18d93b8c-42b7-42a1-840e-7ad82fe972a4" name="deleteTaskFlow"/>
+			</try>
+		</foreach>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="df1953ad-54c8-4bb6-a99f-7151c08d4200" >
+			<route >
+				<db:select doc:name="Select" doc:id="cfc48c2d-785e-4d15-9607-45f0437eaab1" config-ref="rdbms_master_db_config">
+					<db:sql ><![CDATA[SELECT "ModuleId" FROM module_project_map WHERE "ProjectId" = :projectid]]></db:sql>
+					<db:input-parameters ><![CDATA[#[{
+	"projectid" : vars.backup_payload_proj.projectId
+}]]]></db:input-parameters>
+				</db:select>
+				<ee:transform doc:name="Transform Message" doc:id="85946c7c-fe8b-4d23-b487-463d12165fb4" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+				<db:bulk-delete doc:name="Bulk delete" doc:id="78d6bafe-8f76-442b-8169-78523c3e9972" config-ref="rdbms_master_db_config">
+					<db:sql ><![CDATA[DELETE FROM module_project_map WHERE "ModuleId" = :ModuleId;
+DELETE FROM module_master WHERE "ModuleId" = :ModuleId;]]></db:sql>
+				</db:bulk-delete>
+			</route>
+			<route >
+				<db:select doc:name="Select" doc:id="203ef1eb-2acd-4d9d-87f4-1d949daa0713" config-ref="rdbms_master_db_config">
+					<db:sql><![CDATA[SELECT "TypeId" FROM type_project_map WHERE "ProjectId" = :projectid]]></db:sql>
+					<db:input-parameters><![CDATA[#[{
+	"projectid" : vars.backup_payload_proj.projectId
+}]]]></db:input-parameters>
+				</db:select>
+				<ee:transform doc:name="Transform Message" doc:id="dde3c01c-8604-4fd0-8f3c-80bd88eda791" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+				<db:bulk-delete doc:name="Bulk delete" doc:id="9defb71d-d438-41b4-bd23-88fbd897ade6" config-ref="rdbms_master_db_config" >
+					<db:sql ><![CDATA[DELETE FROM type_project_map WHERE "TypeId" = :TypeId;
+DELETE FROM type_master WHERE "TypeId" = :TypeId;]]></db:sql>
+				</db:bulk-delete>
+			</route>
+			<route >
+				<db:select doc:name="Select" doc:id="1c10268c-499d-4844-b7cf-524a21ce74ca" config-ref="rdbms_master_db_config">
+					<db:sql><![CDATA[SELECT "PriorityId" FROM priority_project_map WHERE "ProjectId" = :projectid]]></db:sql>
+					<db:input-parameters><![CDATA[#[{
+	"projectid" : vars.backup_payload_proj.projectId
+}]]]></db:input-parameters>
+				</db:select>
+				<ee:transform doc:name="Transform Message" doc:id="5f3c169b-571b-4342-81ae-2f77340f7bb2" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+				<db:bulk-delete doc:name="Bulk delete" doc:id="9bf06ff9-4f6a-4360-b753-49d8ad67479a" config-ref="rdbms_master_db_config" >
+					<db:sql ><![CDATA[DELETE FROM priority_project_map WHERE "PriorityId" = :PriorityId;
+DELETE FROM priority_master WHERE "PriorityId" = :PriorityId;]]></db:sql>
+				</db:bulk-delete>
+			</route>
+			<route >
+				<db:delete doc:name="Delete" doc:id="dd470825-defe-41ca-86cb-a71b39651557" config-ref="rdbms_master_db_config">
+					<db:sql ><![CDATA[DELETE FROM user_project_map WHERE "ProjectId" = :projectid;
+DELETE FROM project_master WHERE "ProjectId" = :projectid;]]></db:sql>
+					<db:input-parameters ><![CDATA[#[{
+	"projectid" : vars.backup_payload_proj.projectId
+}]]]></db:input-parameters>
+				</db:delete>
+			</route>
+		</scatter-gather>
+		<ee:transform doc:name="Transform Message" doc:id="0b187c8a-50af-46c9-ae85-844098b65668" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

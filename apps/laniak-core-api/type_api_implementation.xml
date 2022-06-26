@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="getTypeIdFromName" doc:id="36012b60-c5d7-46f5-8302-c3c825950609" >
+		<db:select doc:name="Select" doc:id="500c985f-bd86-4141-81d9-a07fef9ee2a1" config-ref="rdbms_master_db_config">
+			<db:sql ><![CDATA[SELECT "TypeId" FROM Type_master WHERE "Type" = :typeName]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'typeName' : attributes.queryParams.name}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="45c5e0fa-69a3-4560-86ec-130fad311800" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="getTypesFromProject" doc:id="62fb8a65-ff1b-4aa0-b103-9e4d5e0a36b9" >
+		<db:select doc:name="Select" doc:id="690bb97e-3509-410b-9dc7-bf0bbc55a1b1" config-ref="rdbms_master_db_config">
+			<db:sql ><![CDATA[SELECT "TypeId" , "Type" FROM View_typeProjectMap WHERE "ProjectId" = :projectId]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'projectId' : attributes.queryParams.projectId}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="7a0cc3b0-9285-4364-bfe9-10db6db58eaf" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="mainTypeFlow" doc:id="b1bd3ae3-732f-4da4-9086-ffe5e050c822" >
+		<choice doc:name="Choice" doc:id="7db9a8db-9abd-46b5-9f35-2c9f71bd45a7" >
+			<when expression="#[attributes.queryParams.name != null]">
+				<flow-ref doc:name="Flow Reference" doc:id="eea099e4-c80e-4b56-88d2-74881d3e660e" name="getTypeIdFromName"/>
+			</when>
+			<otherwise >
+				<flow-ref doc:name="getTypesFromProject" doc:id="00a18bbe-5085-47f9-b19b-6482bad16000" name="getTypesFromProject"/>
+			</otherwise>
+		</choice>
+	</flow>
+	<flow name="createNewType" doc:id="7499dd5c-bf6f-4b91-8c26-a176d646e680" >
+		<set-variable value="#[payload]" doc:name="Set backup_payload" doc:id="071e8bb2-8949-40f2-99cd-bddf04ad22f6" variableName="backup_payload" />
+		<flow-ref doc:name="generateNewId" doc:id="ce45af05-d5ea-43b7-b8ea-d7e2b20df140" name="generateNewId" />
+		<set-variable value='#[%dw 2.0&#10;output application/json&#10;---&#10;vars.backup_payload default {} ++ {"typeId" : payload.nextval}]' doc:name="Reset backup_payload" doc:id="814c57e2-4e56-4e80-8c1f-e962dbe23397" variableName="backup_payload" />
+		<try doc:name="Try" doc:id="c437ccf6-f072-4d76-b4c2-e0ddd40a6051" transactionalAction="ALWAYS_BEGIN" >
+			<db:insert doc:name="Type_Master Insert" doc:id="47e6d0ba-2157-405e-af6c-44d35ab4578e" config-ref="rdbms_master_db_config" >
+				<db:sql ><![CDATA[INSERT INTO type_master ("TypeId", "Type", "DateCreated") VALUES (:typeid , :type, CURRENT_DATE)]]></db:sql>
+				<db:input-parameters ><![CDATA[#[{
+	"typeid" : vars.backup_payload.typeId,
+	"type" : vars.backup_payload."type"
+}]]]></db:input-parameters>
+			</db:insert>
+			<ee:transform doc:name="Transform Message" doc:id="1fafde95-9b87-41a1-8460-2dd979535bc9" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+vars.backup_payload]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<flow-ref doc:name="createNewTypeProjectMap" doc:id="df38c4f8-533b-408d-adea-86c2fb5828c1" name="createNewTypeProjectMap" />
+		</try>
+		<ee:transform doc:name="Transform Message" doc:id="9e07d2e3-71d4-48d5-9e83-6d6048c1e2e6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="deleteTypeFlow" doc:id="9119af08-2076-403b-b1fc-15280e425ffc" >
+		<set-variable value="#[payload]" doc:name="Set backup_payload" doc:id="d9a3daea-dea7-4257-a947-71bfe9e87c91" variableName="backup_payload" />
+		<db:select doc:name="Select" doc:id="09714e70-322a-474b-9392-59a27e1d1595" config-ref="rdbms_master_db_config" >
+			<db:sql ><![CDATA[SELECT COUNT(*) FROM 
+(SELECT * FROM task_master tm JOIN type_master mm ON (tm."Type" = mm."Type") )temp
+WHERE temp."TypeId" = :typeid]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	"typeid" : vars.backup_payload.typeId
+}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="353464c4-2d9a-4441-a709-0f488dc754a8" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload[0]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<choice doc:name="Choice" doc:id="ffd02843-5010-453d-8757-b14e7665a236" >
+			<when expression="#[payload.count == 0]" >
+				<db:delete doc:name="Delete" doc:id="464c329e-2b7e-45ea-a163-4edf4bc6bf13" config-ref="rdbms_master_db_config" >
+					<db:sql ><![CDATA[DELETE FROM type_master WHERE "TypeId" = :typeid;
+DELETE FROM type_project_map WHERE "TypeId" = :typeid;]]></db:sql>
+					<db:input-parameters ><![CDATA[#[{
+	typeid : vars.backup_payload.typeId
+}]]]></db:input-parameters>
+				</db:delete>
+			</when>
+			<otherwise >
+				<ee:transform doc:name="Transform Message" doc:id="b37a8332-8f6f-483c-b28a-b15e6014c28b" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message" : "Cannot delete type as some tasks are assigned with specified type.Please Complete / Delete / Update tasks to New type and try again"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>

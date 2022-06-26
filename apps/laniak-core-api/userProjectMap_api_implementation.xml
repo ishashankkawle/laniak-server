@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="createNewUserProjectMap" doc:id="953c0990-a66d-4ad6-912f-32d663ec3c03" >
+		<ee:transform doc:name="Prepare payload" doc:id="8601a3ba-6f28-43bc-b004-84fd4601f324" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"userId" : payload.userId,
+	"projectId" : payload.projectId
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<db:insert doc:name="User_Project_Map Insert" doc:id="ec350ba6-8d01-483b-8ff8-ff45f3752e9d" config-ref="rdbms_master_db_config" >
+			<db:sql ><![CDATA[INSERT INTO user_project_map ("UserId" , "ProjectId") VALUES (:userid , :projectid)]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	"userid" : vars.backup_payload.userId,
+	"projectid" : vars.backup_payload.projectId
+}]]]></db:input-parameters>
+		</db:insert>
+	</flow>
+	<flow name="updateUserProjectMapFlow" doc:id="b4f84bfc-b1bc-4aa1-975c-41f9ba6f772e" >
+		<ee:transform doc:name="Prepare Payload" doc:id="1f1f01f0-4487-443c-aeec-f8628ee26dc1" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"userId" : payload.userId,
+	"oldProjectId" : payload.oldProjectId,
+	"newProjectId" : payload.newProjectId
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<db:update doc:name="Update" doc:id="cb5478d1-a06d-4c6a-8d6d-4cefd49c7dbb" config-ref="rdbms_master_db_config">
+					<db:sql><![CDATA[UPDATE user_project_map SET "ProjectId" = :newprojectid WHERE "UserId" = :userid AND "ProjectId" = :oldprojectid]]></db:sql>
+					<db:input-parameters><![CDATA[#[{
+	"userid" : payload.userId,
+	"oldprojectid" : payload.oldProjectId,
+	"newprojectid" : payload.newProjectId
+}]]]></db:input-parameters>
+				</db:update>
+	</flow>
+	<flow name="deleteUserProjectMapFlow" doc:id="a0e86a55-4999-4a3d-a75e-f19a06cc57ef" >
+		<set-variable value="#[payload]" doc:name="Set Variable" doc:id="85a0d485-c036-4bab-82d5-3e3765f28e0b" variableName="backup_payload"/>
+		<db:select doc:name="Select" doc:id="727e5e17-8a42-4e26-9b97-ae05b8cfb27b" config-ref="rdbms_master_db_config">
+			<db:sql ><![CDATA[SELECT COUNT(*) FROM user_project_map WHERE "UserId" = :userid AND "ProjectId" <> :projectid
+
+]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	"userid" : vars.backup_payload.userId,
+	"projectid" : vars.backup_payload.projectId
+}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="c488003c-f1ac-49ef-8260-e7a119d7b32c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload[0]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<choice doc:name="Choice" doc:id="bf6acd14-b498-4fbb-97ed-e06e42bf37fd" >
+			<when expression="#[payload.count &gt; 0]">
+				<db:delete doc:name="Delete" doc:id="82399576-f3ee-4b74-a29a-8bb137961d48" config-ref="rdbms_master_db_config">
+					<db:sql ><![CDATA[DELETE FROM user_project_map WHERE "UserId" = :userid AND "ProjectId" = :projectid]]></db:sql>
+					<db:input-parameters ><![CDATA[#[{
+	"userid" : vars.backup_payload.userId,
+	"projectid" : vars.backup_payload.projectId
+}]]]></db:input-parameters>
+				</db:delete>
+			</when>
+			<otherwise >
+				<ee:transform doc:name="Transform Message" doc:id="a1d7dda5-e64f-45a9-98a2-94ef9600cab4" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message" : "Please map specified to any other project before deleting current mapping"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>

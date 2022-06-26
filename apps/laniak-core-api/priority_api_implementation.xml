@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="getPriorityIdFromName" doc:id="36012b60-c5d7-46f5-8302-c3c825950609" >
+		<db:select doc:name="Select" doc:id="500c985f-bd86-4141-81d9-a07fef9ee2a1" config-ref="rdbms_master_db_config">
+			<db:sql ><![CDATA[SELECT "PriorityId" FROM Priority_master WHERE "Priority" = :priorityName]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'priorityName' : attributes.queryParams.name}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="45c5e0fa-69a3-4560-86ec-130fad311800" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="getPrioritiesFromProject" doc:id="62fb8a65-ff1b-4aa0-b103-9e4d5e0a36b9" >
+		<db:select doc:name="Select" doc:id="690bb97e-3509-410b-9dc7-bf0bbc55a1b1" config-ref="rdbms_master_db_config">
+			<db:sql ><![CDATA[SELECT "PriorityId" , "Priority" FROM View_priorityProjectMap WHERE "ProjectId" = :projectId]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{'projectId' : attributes.queryParams.projectId}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="7a0cc3b0-9285-4364-bfe9-10db6db58eaf" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="mainPriorityFlow" doc:id="b1bd3ae3-732f-4da4-9086-ffe5e050c822" >
+		<choice doc:name="Choice" doc:id="7db9a8db-9abd-46b5-9f35-2c9f71bd45a7" >
+			<when expression="#[attributes.queryParams.name != null]">
+				<flow-ref doc:name="getPriorityIdFromName" doc:id="eea099e4-c80e-4b56-88d2-74881d3e660e" name="getPriorityIdFromName"/>
+			</when>
+			<otherwise >
+				<flow-ref doc:name="getPrioritiesFromProject" doc:id="00a18bbe-5085-47f9-b19b-6482bad16000" name="getPrioritiesFromProject"/>
+			</otherwise>
+		</choice>
+	</flow>
+	<flow name="createNewPriority" doc:id="aa96b7d7-9cc9-4d52-aaab-5c77bd7ca4dd" >
+		<set-variable value="#[payload]" doc:name="Set backup_payload" doc:id="51168f30-7099-4a26-a005-c1145def1679" variableName="backup_payload" />
+		<flow-ref doc:name="generateNewId" doc:id="17d84647-3d48-4976-bbc9-aa6a9a9b9d37" name="generateNewId" />
+		<set-variable value='#[%dw 2.0&#10;output application/json&#10;---&#10;vars.backup_payload default {} ++ {"priorityId" : payload.nextval}]' doc:name="Reset backup_payload" doc:id="0f6b470e-cebd-4477-9c4f-e83ec43480e5" variableName="backup_payload" />
+		<try doc:name="Try" doc:id="8ff9d48d-09af-4f5a-b037-20feb1ac776b" transactionalAction="ALWAYS_BEGIN" >
+			<db:insert doc:name="Priority_Master Insert" doc:id="f0c62003-851c-43e4-85cf-b3be2f5132d2" config-ref="rdbms_master_db_config" >
+				<db:sql ><![CDATA[INSERT INTO priority_master ("PriorityId", "Priority", "DateCreated") VALUES (:priorityid , :priority, CURRENT_DATE)]]></db:sql>
+				<db:input-parameters ><![CDATA[#[{
+	"priorityid" : vars.backup_payload.priorityId,
+	"priority" : vars.backup_payload.priority
+}]]]></db:input-parameters>
+			</db:insert>
+			<ee:transform doc:name="Transform Message" doc:id="30b30e75-63ad-4873-8bb9-d6f19aff6a1f" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+vars.backup_payload]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+			<flow-ref doc:name="createNewPriorityProjectMap" doc:id="1e59404e-adaa-484a-92fb-3f422050e9ce" name="createNewPriorityProjectMap" />
+		</try>
+		<ee:transform doc:name="Transform Message" doc:id="690d79f8-f6b4-43df-88b8-9b9240b644e0" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="deletePriorityFlow" doc:id="87b10aa1-a974-451c-911c-b596bab73d57" >
+		<set-variable value="#[payload]" doc:name="Set backup_payload" doc:id="4b3c6c3f-c9e4-4675-8a1e-11e1fa87e266" variableName="backup_payload" />
+		<db:select doc:name="Select" doc:id="908bd6bd-c152-4525-8987-009cfa702232" config-ref="rdbms_master_db_config" >
+			<db:sql ><![CDATA[SELECT COUNT(*) FROM 
+(SELECT * FROM task_master tm JOIN priority_master mm ON (tm."Priority" = mm."Priority") )temp
+WHERE temp."PriorityId" = :priorityid]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	"priorityid" : vars.backup_payload.priorityId
+}]]]></db:input-parameters>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="554cfa36-958e-4409-97de-9beb2fb31ed0" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload[0]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<choice doc:name="Choice" doc:id="3ef38e5a-1f3f-4cdc-8ccd-bcd84a0b6cec" >
+			<when expression="#[payload.count == 0]" >
+				<db:delete doc:name="Delete" doc:id="30c9d722-98ca-4300-8600-7b4117a07f41" config-ref="rdbms_master_db_config" >
+					<db:sql ><![CDATA[DELETE FROM priority_master WHERE "PriorityId" = :priorityid;
+DELETE FROM priority_project_map WHERE "PriorityId" = :priorityid;]]></db:sql>
+					<db:input-parameters ><![CDATA[#[{
+	priorityid : vars.backup_payload.priorityId
+}]]]></db:input-parameters>
+				</db:delete>
+			</when>
+			<otherwise >
+				<ee:transform doc:name="Transform Message" doc:id="0da36a69-478a-4725-9a30-d94c190da481" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"message" : "Cannot delete priority as some tasks are assigned with specified priority.Please Complete / Delete / Update tasks to New priority and try again"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>

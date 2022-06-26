@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>46e89148-259e-4ae9-b06b-bde1fcd96d21</groupId>
+  <artifactId>generic_message_responses</artifactId>
+  <version>1.0.1</version>
+  <name>Generic_Message_Responses</name>
+  <properties>
+    <classifier>raml-fragment</classifier>
+    <main>generic_message_responses.raml</main>
+    <originalFormatVersion>1.0</originalFormatVersion>
+    <projectId>33a12bf7-7e5b-4bec-9e03-7a33b297cc20</projectId>
+    <branchId>master</branchId>
+    <commitId>ebea7176523338b21e8489673dab14e976294d54</commitId>
+    <type>raml-fragment</type>
+    <mainFile>generic_message_responses.raml</mainFile>
+  </properties>
+  <repositories>
+    <repository>
+      <id>anypoint-exchange</id>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+    </repository>
+  </repositories>
+</project>
