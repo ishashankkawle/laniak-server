@@ -1,14 +1,17 @@
 --> Wrapper Started as Console
-Java Service Wrapper Standard Edition 64-bit 3.5.45
-  Copyright (C) 1999-2021 Tanuki Software, Ltd. All Rights Reserved.
+Java Service Wrapper Standard Edition 64-bit 3.5.37
+  Copyright (C) 1999-2018 Tanuki Software, Ltd. All Rights Reserved.
     http://wrapper.tanukisoftware.com
   Licensed to MuleSoft Inc. for Mule Runtime Enterprise Edition
+
+Running in a console with QuickEdit Mode. Be careful when selecting text in the
+  console as this may cause to block the Java Application.
 
 Launching a JVM...
 Starting the Mule Container...
 WrapperManager: Initializing...
 
-Valid license key --> Evaluation = true, Expiration Date = Wed Jul 20 00:00:00 IST 2022, Contact Name = MuleSoft Support, Contact Email Address = support@mulesoft.com, Contact Telephone = support@mulesoft.com, Contact Company = MuleSoft, Contact Country = US, Entitlements = 
+Valid license key --> Evaluation = true, Expiration Date = Wed Jul 27 00:00:00 IST 2022, Contact Name = MuleSoft Support, Contact Email Address = support@mulesoft.com, Contact Telephone = support@mulesoft.com, Contact Company = MuleSoft, Contact Country = US, Entitlements = 
 
 
 **********************************************************************
@@ -46,82 +49,177 @@ Valid license key --> Evaluation = true, Expiration Date = Wed Jul 20 00:00:00 I
 *                                                                    *
 *                                                                    *
 * Mule Runtime and Integration Platform                              *
-* Version: 4.3.0-20210119 Build: 08e1da0d                            *
+* Version: 4.2.2 Build: e790fb3a                                     *
 * MuleSoft, Inc.                                                     *
 * For more information go to                                         *
 * https://www.mulesoft.com/platform/soa/mule-esb-enterprise          *
 *                                                                    *
-* Server started: 20/06/22 2:31 PM                                   *
+* Server started: 27/06/22 11:53 AM                                  *
 * JDK: 1.8.0_311 (mixed mode)                                        *
 * JDK properties:                                                    *
 *  - java.vendor = Oracle Corporation                                *
 *  - java.vm.name = Java HotSpot(TM) 64-Bit Server VM                *
 *  - java.home = C:\Program Files\Java\jre1.8.0_311                  *
 * OS: Windows 10 -  (10.0, amd64)                                    *
-* Host: DESKTOP-V1U00R6 (192.168.0.102)                              *
+* Host: DESKTOP-V1U00R6 (172.30.16.1)                                *
 * Mule services:                                                     *
 *  - api-gateway-contract-service-1.1.0                              *
 *  - api-gateway-events-collector-service-1.1.0                      *
-*  - mule-service-http-ee-1.6.8                                      *
-*  - mule-service-oauth-ee-1.0.0                                     *
-*  - mule-service-scheduler-1.3.2                                    *
-*  - mule-service-soap-1.3.0                                         *
-*  - mule-service-weave-ee-2.3.0-20210119                            *
+*  - mule-service-http-ee-1.5.0                                      *
+*  - mule-service-oauth-1.3.2                                        *
+*  - mule-service-scheduler-1.2.4                                    *
+*  - mule-service-soap-1.2.1                                         *
+*  - mule-service-weave-ee-2.2.2                                     *
+* Mule server plugins:                                               *
+*  - .gitkeep                                                        *
 * Applied artifact patches:                                          *
-*  - APIKIT-2576-1.3.7-1.3.9-2.0.jar                                 *
-*  - APIKIT-2612-1.0.0-1.0.2-1.1.0-1.0.jar                           *
-*  - APIKIT-2612-1.1.1-1.0.jar                                       *
-*  - APIKIT-2612-1.1.11-1.0.jar                                      *
-*  - APIKIT-2612-1.1.12-1.2.0-1.2.2-1.0.jar                          *
-*  - APIKIT-2612-1.1.13-1.1.14-1.2.3-1.2.4-1.0.jar                   *
-*  - APIKIT-2612-1.1.15-1.1.16-1.0.jar                               *
-*  - APIKIT-2612-1.1.2-1.0.jar                                       *
-*  - APIKIT-2612-1.1.3-1.0.jar                                       *
-*  - APIKIT-2612-1.1.4-1.0.jar                                       *
-*  - APIKIT-2612-1.1.5-1.1.6-1.0.jar                                 *
-*  - APIKIT-2612-1.1.7-1.0.jar                                       *
-*  - APIKIT-2612-1.1.8-1.1.10-1.0.jar                                *
-*  - APIKIT-2612-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2612-1.3.0-1.0.jar                                       *
-*  - APIKIT-2612-1.3.5-1.3.9-1.0.jar                                 *
-*  - APIKIT-2613-1.2.0-1.2.1-1.0.jar                                 *
-*  - APIKIT-2613-1.2.2-1.0.jar                                       *
-*  - APIKIT-2613-1.2.3-1.2.4-1.3.0-1.0.jar                           *
-*  - APIKIT-2613-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2613-1.3.5-1.3.6-1.0.jar                                 *
-*  - APIKIT-2613-1.3.7-1.3.8-1.0.jar                                 *
-*  - APIKIT-2613-1.3.9-1.0.jar                                       *
-*  - MULE-17706-1.1.1-1.1.2-1.0.jar                                  *
-*  - MULE-17706-1.2.0-1.0.jar                                        *
-*  - MULE-17706-1.2.1-1.2.2-1.0.jar                                  *
-*  - MULE-17706-1.2.3-1.0.jar                                        *
-*  - MULE-17706-1.3.0-1.3.1-1.0.jar                                  *
-*  - MULE-17706-1.3.2-1.3.3-1.0.jar                                  *
-*  - MULE-17706-1.3.4-1.0.jar                                        *
-*  - MULE-17706-1.4.0-1.0.jar                                        *
-*  - MULE-17706-1.4.1-1.4.3-1.0.jar                                  *
-*  - MULE-17706-1.5.0-1.5.6-1.0.jar                                  *
-*  - MULE-17706-1.5.10-1.5.11-1.0.jar                                *
-*  - MULE-17706-1.5.7-1.5.9-1.0.jar                                  *
-*  - MULE-18457-1.1.1-1.0.jar                                        *
-*  - MULE-18457-1.2.0-1.2.1-1.0.jar                                  *
-*  - MULE-18457-1.3.0-1.0.jar                                        *
-*  - MULE-18457-1.3.1-1.0.jar                                        *
-*  - MULE-18457-1.3.2-1.0.jar                                        *
-*  - MULE-18457-1.3.3-1.0.jar                                        *
-*  - MULE-18900-1.4.0-1.0.jar                                        *
 *  - SE-12551-1.0.0-1.0.1-1.0.jar                                    *
 *  - SE-12551-1.1.0-1.1.15-2.0.jar                                   *
 *  - SE-12551-1.2.0-1.3.0-1.0.jar                                    *
 *  - SE-12551-1.3.1-1.3.4-1.0.jar                                    *
 *  - SE-12562-1.0.0-1.5.5-1.0.jar                                    *
-*  - SE-17198-1.0.jar                                                *
 * Mule system properties:                                            *
 *  - mule.metadata.cache.expirationInterval.millis = 5000            *
-* - mule.base =                                                      *
-* C:\MuleRuntime\mule-enterprise-standalone-4.3.0-20210119           *
-* - mule.home =                                                      *
-* C:\MuleRuntime\mule-enterprise-standalone-4.3.0-20210119           *
+*  - mule.base = C:\MuleRuntime\mule-heroku-dyno                     *
+*  - mule.home = C:\MuleRuntime\mule-heroku-dyno                     *
+*  - mule.metadata.cache.entryTtl.minutes = 10                       *
+**********************************************************************
+
+**********************************************************************
+* Cluster configuration                                              *
+*                                                                    *
+* Cluster mode disabled                                              *
+**********************************************************************
+WARN  2022-06-27 11:53:27,705 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'HTTP' contains a local package 'com.sun.activation.viewers', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 11:53:27,705 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'HTTP' contains a local package 'com.sun.activation.registries', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 11:53:27,705 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'HTTP' contains a local package 'javax.activation', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 11:53:27,705 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'HTTP' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Disposing domain 'Domain-Listener-1.0.0-SNAPSHOT-mule-domain'                +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Failed to deploy artifact 'Domain-Listener-1.0.0-SNAPSHOT-mule-domain',      +
++ org.mule.runtime.deployment.model.api.DeploymentInitException:               +
++ PropertyNotFoundException: Couldn't find configuration property value for    +
++ key ${PORT} from properties provider environment properties provider -       +
++ within resolver Deployment properties trying to process key PORT - within    +
++ resolver global-properties configuration attributes trying to process key    +
++ PORT - within resolver environment properties provider trying to process     +
++ key PORT - within resolver Deployment properties trying to process key PORT  +
++ - within resolver global-properties configuration attributes trying to       +
++ process key PORT - within resolver environment properties provider trying    +
++ to process key PORT - within resolver Deployment properties trying to        +
++ process key PORT - within resolver External files trying to process key      +
++ PORT - within resolver Deployment properties trying to process key PORT      +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ERROR 2022-06-27 11:53:29,463 [WrapperListener_start_runner] [event: ] org.mule.runtime.module.deployment.internal.DefaultArchiveDeployer: Failed to deploy artifact [Domain-Listener-1.0.0-SNAPSHOT-mule-domain]
+org.mule.runtime.deployment.model.api.DeploymentException: Failed to deploy artifact [Domain-Listener-1.0.0-SNAPSHOT-mule-domain]
+Caused by: org.mule.runtime.api.exception.MuleRuntimeException: org.mule.runtime.deployment.model.api.DeploymentInitException: PropertyNotFoundException: Couldn't find configuration property value for key ${PORT} from properties provider environment properties provider - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver External files trying to process key PORT - within resolver Deployment properties trying to process key PORT
+Caused by: org.mule.runtime.deployment.model.api.DeploymentInitException: PropertyNotFoundException: Couldn't find configuration property value for key ${PORT} from properties provider environment properties provider - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver External files trying to process key PORT - within resolver Deployment properties trying to process key PORT
+Caused by: org.mule.runtime.core.api.config.ConfigurationException: Couldn't find configuration property value for key ${PORT} from properties provider environment properties provider - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver External files trying to process key PORT - within resolver Deployment properties trying to process key PORT
+Caused by: org.mule.runtime.config.internal.dsl.model.config.PropertyNotFoundException: Couldn't find configuration property value for key ${PORT} from properties provider environment properties provider - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver global-properties configuration attributes trying to process key PORT - within resolver environment properties provider trying to process key PORT - within resolver Deployment properties trying to process key PORT - within resolver External files trying to process key PORT - within resolver Deployment properties trying to process key PORT
+
+**********************************************************************
+* Started domain 'default'                                           *
+**********************************************************************
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Mule is up and kicking (every 5000ms)                                        +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+**********************************************************************
+*              - - + DOMAIN + - -               * - - + STATUS + - - *
+**********************************************************************
+* default                                       * DEPLOYED           *
+* Domain-Listener-1.0.0-SNAPSHOT-mule-domain    * FAILED             *
+**********************************************************************
+
+--> Wrapper Started as Console
+Java Service Wrapper Standard Edition 64-bit 3.5.37
+  Copyright (C) 1999-2018 Tanuki Software, Ltd. All Rights Reserved.
+    http://wrapper.tanukisoftware.com
+  Licensed to MuleSoft Inc. for Mule Runtime Enterprise Edition
+
+Running in a console with QuickEdit Mode. Be careful when selecting text in the
+  console as this may cause to block the Java Application.
+
+Launching a JVM...
+Starting the Mule Container...
+WrapperManager: Initializing...
+
+Valid license key --> Evaluation = true, Expiration Date = Wed Jul 27 00:00:00 IST 2022, Contact Name = MuleSoft Support, Contact Email Address = support@mulesoft.com, Contact Telephone = support@mulesoft.com, Contact Company = MuleSoft, Contact Country = US, Entitlements = 
+
+
+**********************************************************************
+*                                                                    *
+*                         (((((((((((((((((((                        *
+*                     (((((                 ((((#                    *
+*                  &(((                        *(((                  *
+*                &(((                             (((                *
+*               (((     (((%               (((#     (((              *
+*              ((     (((((((             (((((((    (((             *
+*             ((     (((((((((           (((((((((     ((            *
+*            ((    #(((((((((((        #(((((((((((    (((           *
+*           #((    ((((((((((((((     ((((((((((((((    ((           *
+*           ((    ((((((  /(((((((   (((((((  /((((((    ((          *
+*           ((    ((((((    (((((((&(((((((    ((((((    ((          *
+*           ((    (((((      ((((((((((((*     ((((((    ((          *
+*           ((    ((((((      *(((((((((       ((((((    ((          *
+*           ((    ((((((        (((((((        ((((((   (((          *
+*            ((    ((((((                     ((((((    ((           *
+*            ((#    ((((((#                 (((((((    ((            *
+*             ((#    ((((((((             ((((((((    (((            *
+*              (((    (((((((              (((((     ((.             *
+*                ((      (((               (((     #((               *
+*                 /((                            (((                 *
+*                    (((                      &(((                   *
+*                      *((((&             &((((                      *
+*                           ((((((((((((((/                          *
+*                                                                    *
+*    ___  ___      _        ______            _   _                  *
+*    |  \/  |     | |       | ___ \          | | (_)                 *
+*    | .  . |_   _| | ___   | |_/ /   _ _ __ | |_ _ _ __ ___   ___   *
+*    | |\/| | | | | |/ _ \  |    / | | | '_ \| __| | '_ ` _ \ / _ \  *
+*    | |  | | |_| | |  __/  | |\ \ |_| | | | | |_| | | | | | |  __/  *
+*    \_|  |_/\__,_|_|\___|  \_| \_\__,_|_| |_|\__|_|_| |_| |_|\___|  *
+*                                                                    *
+*                                                                    *
+* Mule Runtime and Integration Platform                              *
+* Version: 4.2.2 Build: e790fb3a                                     *
+* MuleSoft, Inc.                                                     *
+* For more information go to                                         *
+* https://www.mulesoft.com/platform/soa/mule-esb-enterprise          *
+*                                                                    *
+* Server started: 27/06/22 12:25 PM                                  *
+* JDK: 1.8.0_311 (mixed mode)                                        *
+* JDK properties:                                                    *
+*  - java.vendor = Oracle Corporation                                *
+*  - java.vm.name = Java HotSpot(TM) 64-Bit Server VM                *
+*  - java.home = C:\Program Files\Java\jre1.8.0_311                  *
+* OS: Windows 10 -  (10.0, amd64)                                    *
+* Host: DESKTOP-V1U00R6 (172.30.16.1)                                *
+* Mule services:                                                     *
+*  - api-gateway-contract-service-1.1.0                              *
+*  - api-gateway-events-collector-service-1.1.0                      *
+*  - mule-service-http-ee-1.5.0                                      *
+*  - mule-service-oauth-1.3.2                                        *
+*  - mule-service-scheduler-1.2.4                                    *
+*  - mule-service-soap-1.2.1                                         *
+*  - mule-service-weave-ee-2.2.2                                     *
+* Mule server plugins:                                               *
+*  - .gitkeep                                                        *
+* Applied artifact patches:                                          *
+*  - SE-12551-1.0.0-1.0.1-1.0.jar                                    *
+*  - SE-12551-1.1.0-1.1.15-2.0.jar                                   *
+*  - SE-12551-1.2.0-1.3.0-1.0.jar                                    *
+*  - SE-12551-1.3.1-1.3.4-1.0.jar                                    *
+*  - SE-12562-1.0.0-1.5.5-1.0.jar                                    *
+* Mule system properties:                                            *
+*  - mule.metadata.cache.expirationInterval.millis = 5000            *
+*  - mule.base = C:\MuleRuntime\mule-heroku-dyno                     *
+*  - mule.home = C:\MuleRuntime\mule-heroku-dyno                     *
 *  - mule.metadata.cache.entryTtl.minutes = 10                       *
 **********************************************************************
 
@@ -134,20 +232,20 @@ Valid license key --> Evaluation = true, Expiration Date = Wed Jul 20 00:00:00 I
 **********************************************************************
 * Started domain 'default'                                           *
 **********************************************************************
-WARN  2022-06-20 14:31:34,187 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'Database' contains a local package 'javax.transaction', but it will be ignored since it is already available from the container.
-WARN  2022-06-20 14:31:34,189 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'MongoDB' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
-WARN  2022-06-20 14:31:34,194 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.w3c.dom.html', but it will be ignored since it is already available from the container.
-WARN  2022-06-20 14:31:34,194 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.security', but it will be ignored since it is already available from the container.
-WARN  2022-06-20 14:31:34,194 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.sql', but it will be ignored since it is already available from the container.
-WARN  2022-06-20 14:31:34,194 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
-WARN  2022-06-20 14:31:34,195 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.apache.commons.logging', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 12:25:14,908 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'Database' contains a local package 'javax.transaction', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 12:25:14,910 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'MongoDB' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 12:25:14,913 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.w3c.dom.html', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 12:25:14,913 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.security', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 12:25:14,915 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.sql', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 12:25:14,915 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
+WARN  2022-06-27 12:25:14,915 [WrapperListener_start_runner] [event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.apache.commons.logging', but it will be ignored since it is already available from the container.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ New app 'laniak-core-api'                                                    +
++ New app 'laniak-core-api-4-2-2'                                              +
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Initializing app 'laniak-core-api'                                           +
++ Initializing app 'laniak-core-api-4-2-2'                                     +
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 **********************************************************************
@@ -155,20 +253,23 @@ WARN  2022-06-20 14:31:34,195 [WrapperListener_start_runner] [processor: ; event
 *                                                                    *
 * Resolved configuration values:                                     *
 *                                                                    *
-* Pooling strategy:       UBER                                       *
 * gracefulShutdownTimeout:       15000 ms                            *
-* uber.threadPool.maxSize:         154                               *
-* uber.threadPool.threadKeepAlive: 30000 ms                          *
+* cpuLight.threadPool.size:      16                                  *
+* cpuLight.workQueue.size:       0                                   *
+* io.threadPool.maxSize:         45                                  *
+* io.threadPool.threadKeepAlive: 30000 ms                            *
+* cpuIntensive.threadPool.size:  16                                  *
+* cpuIntensive.workQueue.size:   16                                  *
 *                                                                    *
 * These can be modified by editing 'conf/scheduler-pools.conf'       *
 **********************************************************************
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Starting app 'laniak-core-api'                                               +
++ Starting app 'laniak-core-api-4-2-2'                                         +
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 **********************************************************************
-* Started app 'laniak-core-api'                                      *
+* Started app 'laniak-core-api-4-2-2'                                *
 * Application plugins:                                               *
 *  - Database : 1.10.3                                               *
 *  - MongoDB : 6.3.3                                                 *
@@ -177,9 +278,9 @@ WARN  2022-06-20 14:31:34,195 [WrapperListener_start_runner] [processor: ; event
 *  - APIKit : 1.5.3                                                  *
 * Application libraries:                                             *
 *  - postgresql-42.2.23.jar                                          *
-*  - checker-qual-3.5.0.jar                                          *
 *  - mongo-java-driver-3.12.10.jar                                   *
 *  - v2-1.0.8-raml.zip                                               *
+*  - checker-qual-3.5.0.jar                                          *
 *  - generic_message_responses-1.0.1-raml-fragment.zip               *
 **********************************************************************
 
@@ -196,549 +297,6 @@ WARN  2022-06-20 14:31:34,195 [WrapperListener_start_runner] [processor: ; event
 *******************************************************************************************************
 *            - - + APPLICATION + - -            *       - - + DOMAIN + - -       * - - + STATUS + - - *
 *******************************************************************************************************
-* laniak-core-api                               * default                        * DEPLOYED           *
-*******************************************************************************************************
-
---> Wrapper Started as Console
-Java Service Wrapper Standard Edition 64-bit 3.5.45
-  Copyright (C) 1999-2021 Tanuki Software, Ltd. All Rights Reserved.
-    http://wrapper.tanukisoftware.com
-  Licensed to MuleSoft Inc. for Mule Runtime Enterprise Edition
-
-Launching a JVM...
-Starting the Mule Container...
-WrapperManager: Initializing...
-
-Valid license key --> Evaluation = true, Expiration Date = Wed Jul 20 00:00:00 IST 2022, Contact Name = MuleSoft Support, Contact Email Address = support@mulesoft.com, Contact Telephone = support@mulesoft.com, Contact Company = MuleSoft, Contact Country = US, Entitlements = 
-
-
-**********************************************************************
-*                                                                    *
-*                         (((((((((((((((((((                        *
-*                     (((((                 ((((#                    *
-*                  &(((                        *(((                  *
-*                &(((                             (((                *
-*               (((     (((%               (((#     (((              *
-*              ((     (((((((             (((((((    (((             *
-*             ((     (((((((((           (((((((((     ((            *
-*            ((    #(((((((((((        #(((((((((((    (((           *
-*           #((    ((((((((((((((     ((((((((((((((    ((           *
-*           ((    ((((((  /(((((((   (((((((  /((((((    ((          *
-*           ((    ((((((    (((((((&(((((((    ((((((    ((          *
-*           ((    (((((      ((((((((((((*     ((((((    ((          *
-*           ((    ((((((      *(((((((((       ((((((    ((          *
-*           ((    ((((((        (((((((        ((((((   (((          *
-*            ((    ((((((                     ((((((    ((           *
-*            ((#    ((((((#                 (((((((    ((            *
-*             ((#    ((((((((             ((((((((    (((            *
-*              (((    (((((((              (((((     ((.             *
-*                ((      (((               (((     #((               *
-*                 /((                            (((                 *
-*                    (((                      &(((                   *
-*                      *((((&             &((((                      *
-*                           ((((((((((((((/                          *
-*                                                                    *
-*    ___  ___      _        ______            _   _                  *
-*    |  \/  |     | |       | ___ \          | | (_)                 *
-*    | .  . |_   _| | ___   | |_/ /   _ _ __ | |_ _ _ __ ___   ___   *
-*    | |\/| | | | | |/ _ \  |    / | | | '_ \| __| | '_ ` _ \ / _ \  *
-*    | |  | | |_| | |  __/  | |\ \ |_| | | | | |_| | | | | | |  __/  *
-*    \_|  |_/\__,_|_|\___|  \_| \_\__,_|_| |_|\__|_|_| |_| |_|\___|  *
-*                                                                    *
-*                                                                    *
-* Mule Runtime and Integration Platform                              *
-* Version: 4.3.0-20210119 Build: 08e1da0d                            *
-* MuleSoft, Inc.                                                     *
-* For more information go to                                         *
-* https://www.mulesoft.com/platform/soa/mule-esb-enterprise          *
-*                                                                    *
-* Server started: 26/06/22 10:40 AM                                  *
-* JDK: 1.8.0_311 (mixed mode)                                        *
-* JDK properties:                                                    *
-*  - java.vendor = Oracle Corporation                                *
-*  - java.vm.name = Java HotSpot(TM) 64-Bit Server VM                *
-*  - java.home = C:\Program Files\Java\jre1.8.0_311                  *
-* OS: Windows 10 -  (10.0, amd64)                                    *
-* Host: DESKTOP-V1U00R6 (172.30.16.1)                                *
-* Mule services:                                                     *
-*  - api-gateway-contract-service-1.1.0                              *
-*  - api-gateway-events-collector-service-1.1.0                      *
-*  - mule-service-http-ee-1.6.8                                      *
-*  - mule-service-oauth-ee-1.0.0                                     *
-*  - mule-service-scheduler-1.3.2                                    *
-*  - mule-service-soap-1.3.0                                         *
-*  - mule-service-weave-ee-2.3.0-20210119                            *
-* Applied artifact patches:                                          *
-*  - APIKIT-2576-1.3.7-1.3.9-2.0.jar                                 *
-*  - APIKIT-2612-1.0.0-1.0.2-1.1.0-1.0.jar                           *
-*  - APIKIT-2612-1.1.1-1.0.jar                                       *
-*  - APIKIT-2612-1.1.11-1.0.jar                                      *
-*  - APIKIT-2612-1.1.12-1.2.0-1.2.2-1.0.jar                          *
-*  - APIKIT-2612-1.1.13-1.1.14-1.2.3-1.2.4-1.0.jar                   *
-*  - APIKIT-2612-1.1.15-1.1.16-1.0.jar                               *
-*  - APIKIT-2612-1.1.2-1.0.jar                                       *
-*  - APIKIT-2612-1.1.3-1.0.jar                                       *
-*  - APIKIT-2612-1.1.4-1.0.jar                                       *
-*  - APIKIT-2612-1.1.5-1.1.6-1.0.jar                                 *
-*  - APIKIT-2612-1.1.7-1.0.jar                                       *
-*  - APIKIT-2612-1.1.8-1.1.10-1.0.jar                                *
-*  - APIKIT-2612-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2612-1.3.0-1.0.jar                                       *
-*  - APIKIT-2612-1.3.5-1.3.9-1.0.jar                                 *
-*  - APIKIT-2613-1.2.0-1.2.1-1.0.jar                                 *
-*  - APIKIT-2613-1.2.2-1.0.jar                                       *
-*  - APIKIT-2613-1.2.3-1.2.4-1.3.0-1.0.jar                           *
-*  - APIKIT-2613-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2613-1.3.5-1.3.6-1.0.jar                                 *
-*  - APIKIT-2613-1.3.7-1.3.8-1.0.jar                                 *
-*  - APIKIT-2613-1.3.9-1.0.jar                                       *
-*  - MULE-17706-1.1.1-1.1.2-1.0.jar                                  *
-*  - MULE-17706-1.2.0-1.0.jar                                        *
-*  - MULE-17706-1.2.1-1.2.2-1.0.jar                                  *
-*  - MULE-17706-1.2.3-1.0.jar                                        *
-*  - MULE-17706-1.3.0-1.3.1-1.0.jar                                  *
-*  - MULE-17706-1.3.2-1.3.3-1.0.jar                                  *
-*  - MULE-17706-1.3.4-1.0.jar                                        *
-*  - MULE-17706-1.4.0-1.0.jar                                        *
-*  - MULE-17706-1.4.1-1.4.3-1.0.jar                                  *
-*  - MULE-17706-1.5.0-1.5.6-1.0.jar                                  *
-*  - MULE-17706-1.5.10-1.5.11-1.0.jar                                *
-*  - MULE-17706-1.5.7-1.5.9-1.0.jar                                  *
-*  - MULE-18457-1.1.1-1.0.jar                                        *
-*  - MULE-18457-1.2.0-1.2.1-1.0.jar                                  *
-*  - MULE-18457-1.3.0-1.0.jar                                        *
-*  - MULE-18457-1.3.1-1.0.jar                                        *
-*  - MULE-18457-1.3.2-1.0.jar                                        *
-*  - MULE-18457-1.3.3-1.0.jar                                        *
-*  - MULE-18900-1.4.0-1.0.jar                                        *
-*  - SE-12551-1.0.0-1.0.1-1.0.jar                                    *
-*  - SE-12551-1.1.0-1.1.15-2.0.jar                                   *
-*  - SE-12551-1.2.0-1.3.0-1.0.jar                                    *
-*  - SE-12551-1.3.1-1.3.4-1.0.jar                                    *
-*  - SE-12562-1.0.0-1.5.5-1.0.jar                                    *
-*  - SE-17198-1.0.jar                                                *
-* Mule system properties:                                            *
-*  - mule.metadata.cache.expirationInterval.millis = 5000            *
-*  - mule.base = C:\MuleRuntime\laniak server                        *
-*  - mule.home = C:\MuleRuntime\laniak server                        *
-*  - mule.metadata.cache.entryTtl.minutes = 10                       *
-**********************************************************************
-
-**********************************************************************
-* Cluster configuration                                              *
-*                                                                    *
-* Cluster mode disabled                                              *
-**********************************************************************
-
-**********************************************************************
-* Started domain 'default'                                           *
-**********************************************************************
-WARN  2022-06-26 10:40:59,462 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'Database' contains a local package 'javax.transaction', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 10:40:59,464 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'MongoDB' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 10:40:59,468 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.w3c.dom.html', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 10:40:59,468 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.security', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 10:40:59,468 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.sql', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 10:40:59,470 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 10:40:59,470 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.apache.commons.logging', but it will be ignored since it is already available from the container.
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ New app 'laniak-core-api'                                                    +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Initializing app 'laniak-core-api'                                           +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**********************************************************************
-* Started DefaultSchedulerService                                    *
-*                                                                    *
-* Resolved configuration values:                                     *
-*                                                                    *
-* Pooling strategy:       UBER                                       *
-* gracefulShutdownTimeout:       15000 ms                            *
-* uber.threadPool.maxSize:         154                               *
-* uber.threadPool.threadKeepAlive: 30000 ms                          *
-*                                                                    *
-* These can be modified by editing 'conf/scheduler-pools.conf'       *
-**********************************************************************
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Starting app 'laniak-core-api'                                               +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**********************************************************************
-* Started app 'laniak-core-api'                                      *
-* Application plugins:                                               *
-*  - Database : 1.10.3                                               *
-*  - MongoDB : 6.3.3                                                 *
-*  - Sockets : 1.2.1                                                 *
-*  - HTTP : 1.5.25                                                   *
-*  - APIKit : 1.5.3                                                  *
-* Application libraries:                                             *
-*  - postgresql-42.2.23.jar                                          *
-*  - checker-qual-3.5.0.jar                                          *
-*  - mongo-java-driver-3.12.10.jar                                   *
-*  - v2-1.0.8-raml.zip                                               *
-*  - generic_message_responses-1.0.1-raml-fragment.zip               *
-**********************************************************************
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Mule is up and kicking (every 5000ms)                                        +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**********************************************************************
-*              - - + DOMAIN + - -               * - - + STATUS + - - *
-**********************************************************************
-* default                                       * DEPLOYED           *
-**********************************************************************
-
-*******************************************************************************************************
-*            - - + APPLICATION + - -            *       - - + DOMAIN + - -       * - - + STATUS + - - *
-*******************************************************************************************************
-* laniak-core-api                               * default                        * DEPLOYED           *
-*******************************************************************************************************
-
---> Wrapper Started as Console
-Java Service Wrapper Standard Edition 64-bit 3.5.45
-  Copyright (C) 1999-2021 Tanuki Software, Ltd. All Rights Reserved.
-    http://wrapper.tanukisoftware.com
-  Licensed to MuleSoft Inc. for Mule Runtime Enterprise Edition
-
-Launching a JVM...
-Starting the Mule Container...
-WrapperManager: Initializing...
-
-Valid license key --> Evaluation = true, Expiration Date = Wed Jul 20 00:00:00 IST 2022, Contact Name = MuleSoft Support, Contact Email Address = support@mulesoft.com, Contact Telephone = support@mulesoft.com, Contact Company = MuleSoft, Contact Country = US, Entitlements = 
-
-
-**********************************************************************
-*                                                                    *
-*                         (((((((((((((((((((                        *
-*                     (((((                 ((((#                    *
-*                  &(((                        *(((                  *
-*                &(((                             (((                *
-*               (((     (((%               (((#     (((              *
-*              ((     (((((((             (((((((    (((             *
-*             ((     (((((((((           (((((((((     ((            *
-*            ((    #(((((((((((        #(((((((((((    (((           *
-*           #((    ((((((((((((((     ((((((((((((((    ((           *
-*           ((    ((((((  /(((((((   (((((((  /((((((    ((          *
-*           ((    ((((((    (((((((&(((((((    ((((((    ((          *
-*           ((    (((((      ((((((((((((*     ((((((    ((          *
-*           ((    ((((((      *(((((((((       ((((((    ((          *
-*           ((    ((((((        (((((((        ((((((   (((          *
-*            ((    ((((((                     ((((((    ((           *
-*            ((#    ((((((#                 (((((((    ((            *
-*             ((#    ((((((((             ((((((((    (((            *
-*              (((    (((((((              (((((     ((.             *
-*                ((      (((               (((     #((               *
-*                 /((                            (((                 *
-*                    (((                      &(((                   *
-*                      *((((&             &((((                      *
-*                           ((((((((((((((/                          *
-*                                                                    *
-*    ___  ___      _        ______            _   _                  *
-*    |  \/  |     | |       | ___ \          | | (_)                 *
-*    | .  . |_   _| | ___   | |_/ /   _ _ __ | |_ _ _ __ ___   ___   *
-*    | |\/| | | | | |/ _ \  |    / | | | '_ \| __| | '_ ` _ \ / _ \  *
-*    | |  | | |_| | |  __/  | |\ \ |_| | | | | |_| | | | | | |  __/  *
-*    \_|  |_/\__,_|_|\___|  \_| \_\__,_|_| |_|\__|_|_| |_| |_|\___|  *
-*                                                                    *
-*                                                                    *
-* Mule Runtime and Integration Platform                              *
-* Version: 4.3.0-20210119 Build: 08e1da0d                            *
-* MuleSoft, Inc.                                                     *
-* For more information go to                                         *
-* https://www.mulesoft.com/platform/soa/mule-esb-enterprise          *
-*                                                                    *
-* Server started: 26/06/22 11:14 AM                                  *
-* JDK: 1.8.0_311 (mixed mode)                                        *
-* JDK properties:                                                    *
-*  - java.vendor = Oracle Corporation                                *
-*  - java.vm.name = Java HotSpot(TM) 64-Bit Server VM                *
-*  - java.home = C:\Program Files\Java\jre1.8.0_311                  *
-* OS: Windows 10 -  (10.0, amd64)                                    *
-* Host: DESKTOP-V1U00R6 (172.30.16.1)                                *
-* Mule services:                                                     *
-*  - api-gateway-contract-service-1.1.0                              *
-*  - api-gateway-events-collector-service-1.1.0                      *
-*  - mule-service-http-ee-1.6.8                                      *
-*  - mule-service-oauth-ee-1.0.0                                     *
-*  - mule-service-scheduler-1.3.2                                    *
-*  - mule-service-soap-1.3.0                                         *
-*  - mule-service-weave-ee-2.3.0-20210119                            *
-* Applied artifact patches:                                          *
-*  - APIKIT-2576-1.3.7-1.3.9-2.0.jar                                 *
-*  - APIKIT-2612-1.0.0-1.0.2-1.1.0-1.0.jar                           *
-*  - APIKIT-2612-1.1.1-1.0.jar                                       *
-*  - APIKIT-2612-1.1.11-1.0.jar                                      *
-*  - APIKIT-2612-1.1.12-1.2.0-1.2.2-1.0.jar                          *
-*  - APIKIT-2612-1.1.13-1.1.14-1.2.3-1.2.4-1.0.jar                   *
-*  - APIKIT-2612-1.1.15-1.1.16-1.0.jar                               *
-*  - APIKIT-2612-1.1.2-1.0.jar                                       *
-*  - APIKIT-2612-1.1.3-1.0.jar                                       *
-*  - APIKIT-2612-1.1.4-1.0.jar                                       *
-*  - APIKIT-2612-1.1.5-1.1.6-1.0.jar                                 *
-*  - APIKIT-2612-1.1.7-1.0.jar                                       *
-*  - APIKIT-2612-1.1.8-1.1.10-1.0.jar                                *
-*  - APIKIT-2612-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2612-1.3.0-1.0.jar                                       *
-*  - APIKIT-2612-1.3.5-1.3.9-1.0.jar                                 *
-*  - APIKIT-2613-1.2.0-1.2.1-1.0.jar                                 *
-*  - APIKIT-2613-1.2.2-1.0.jar                                       *
-*  - APIKIT-2613-1.2.3-1.2.4-1.3.0-1.0.jar                           *
-*  - APIKIT-2613-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2613-1.3.5-1.3.6-1.0.jar                                 *
-*  - APIKIT-2613-1.3.7-1.3.8-1.0.jar                                 *
-*  - APIKIT-2613-1.3.9-1.0.jar                                       *
-*  - MULE-17706-1.1.1-1.1.2-1.0.jar                                  *
-*  - MULE-17706-1.2.0-1.0.jar                                        *
-*  - MULE-17706-1.2.1-1.2.2-1.0.jar                                  *
-*  - MULE-17706-1.2.3-1.0.jar                                        *
-*  - MULE-17706-1.3.0-1.3.1-1.0.jar                                  *
-*  - MULE-17706-1.3.2-1.3.3-1.0.jar                                  *
-*  - MULE-17706-1.3.4-1.0.jar                                        *
-*  - MULE-17706-1.4.0-1.0.jar                                        *
-*  - MULE-17706-1.4.1-1.4.3-1.0.jar                                  *
-*  - MULE-17706-1.5.0-1.5.6-1.0.jar                                  *
-*  - MULE-17706-1.5.10-1.5.11-1.0.jar                                *
-*  - MULE-17706-1.5.7-1.5.9-1.0.jar                                  *
-*  - MULE-18457-1.1.1-1.0.jar                                        *
-*  - MULE-18457-1.2.0-1.2.1-1.0.jar                                  *
-*  - MULE-18457-1.3.0-1.0.jar                                        *
-*  - MULE-18457-1.3.1-1.0.jar                                        *
-*  - MULE-18457-1.3.2-1.0.jar                                        *
-*  - MULE-18457-1.3.3-1.0.jar                                        *
-*  - MULE-18900-1.4.0-1.0.jar                                        *
-*  - SE-12551-1.0.0-1.0.1-1.0.jar                                    *
-*  - SE-12551-1.1.0-1.1.15-2.0.jar                                   *
-*  - SE-12551-1.2.0-1.3.0-1.0.jar                                    *
-*  - SE-12551-1.3.1-1.3.4-1.0.jar                                    *
-*  - SE-12562-1.0.0-1.5.5-1.0.jar                                    *
-*  - SE-17198-1.0.jar                                                *
-* Mule system properties:                                            *
-*  - mule.metadata.cache.expirationInterval.millis = 5000            *
-*  - mule.base = C:\MuleRuntime\laniak server                        *
-*  - mule.home = C:\MuleRuntime\laniak server                        *
-*  - mule.metadata.cache.entryTtl.minutes = 10                       *
-**********************************************************************
-
-**********************************************************************
-* Cluster configuration                                              *
-*                                                                    *
-* Cluster mode disabled                                              *
-**********************************************************************
-
-**********************************************************************
-* Started domain 'default'                                           *
-**********************************************************************
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Mule is up and kicking (every 5000ms)                                        +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**********************************************************************
-*              - - + DOMAIN + - -               * - - + STATUS + - - *
-**********************************************************************
-* default                                       * DEPLOYED           *
-**********************************************************************
-
---> Wrapper Started as Console
-Java Service Wrapper Standard Edition 64-bit 3.5.45
-  Copyright (C) 1999-2021 Tanuki Software, Ltd. All Rights Reserved.
-    http://wrapper.tanukisoftware.com
-  Licensed to MuleSoft Inc. for Mule Runtime Enterprise Edition
-
-Launching a JVM...
-Starting the Mule Container...
-WrapperManager: Initializing...
-
-Valid license key --> Evaluation = true, Expiration Date = Wed Jul 20 00:00:00 IST 2022, Contact Name = MuleSoft Support, Contact Email Address = support@mulesoft.com, Contact Telephone = support@mulesoft.com, Contact Company = MuleSoft, Contact Country = US, Entitlements = 
-
-
-**********************************************************************
-*                                                                    *
-*                         (((((((((((((((((((                        *
-*                     (((((                 ((((#                    *
-*                  &(((                        *(((                  *
-*                &(((                             (((                *
-*               (((     (((%               (((#     (((              *
-*              ((     (((((((             (((((((    (((             *
-*             ((     (((((((((           (((((((((     ((            *
-*            ((    #(((((((((((        #(((((((((((    (((           *
-*           #((    ((((((((((((((     ((((((((((((((    ((           *
-*           ((    ((((((  /(((((((   (((((((  /((((((    ((          *
-*           ((    ((((((    (((((((&(((((((    ((((((    ((          *
-*           ((    (((((      ((((((((((((*     ((((((    ((          *
-*           ((    ((((((      *(((((((((       ((((((    ((          *
-*           ((    ((((((        (((((((        ((((((   (((          *
-*            ((    ((((((                     ((((((    ((           *
-*            ((#    ((((((#                 (((((((    ((            *
-*             ((#    ((((((((             ((((((((    (((            *
-*              (((    (((((((              (((((     ((.             *
-*                ((      (((               (((     #((               *
-*                 /((                            (((                 *
-*                    (((                      &(((                   *
-*                      *((((&             &((((                      *
-*                           ((((((((((((((/                          *
-*                                                                    *
-*    ___  ___      _        ______            _   _                  *
-*    |  \/  |     | |       | ___ \          | | (_)                 *
-*    | .  . |_   _| | ___   | |_/ /   _ _ __ | |_ _ _ __ ___   ___   *
-*    | |\/| | | | | |/ _ \  |    / | | | '_ \| __| | '_ ` _ \ / _ \  *
-*    | |  | | |_| | |  __/  | |\ \ |_| | | | | |_| | | | | | |  __/  *
-*    \_|  |_/\__,_|_|\___|  \_| \_\__,_|_| |_|\__|_|_| |_| |_|\___|  *
-*                                                                    *
-*                                                                    *
-* Mule Runtime and Integration Platform                              *
-* Version: 4.3.0-20210119 Build: 08e1da0d                            *
-* MuleSoft, Inc.                                                     *
-* For more information go to                                         *
-* https://www.mulesoft.com/platform/soa/mule-esb-enterprise          *
-*                                                                    *
-* Server started: 26/06/22 11:15 AM                                  *
-* JDK: 1.8.0_311 (mixed mode)                                        *
-* JDK properties:                                                    *
-*  - java.vendor = Oracle Corporation                                *
-*  - java.vm.name = Java HotSpot(TM) 64-Bit Server VM                *
-*  - java.home = C:\Program Files\Java\jre1.8.0_311                  *
-* OS: Windows 10 -  (10.0, amd64)                                    *
-* Host: DESKTOP-V1U00R6 (172.30.16.1)                                *
-* Mule services:                                                     *
-*  - api-gateway-contract-service-1.1.0                              *
-*  - api-gateway-events-collector-service-1.1.0                      *
-*  - mule-service-http-ee-1.6.8                                      *
-*  - mule-service-oauth-ee-1.0.0                                     *
-*  - mule-service-scheduler-1.3.2                                    *
-*  - mule-service-soap-1.3.0                                         *
-*  - mule-service-weave-ee-2.3.0-20210119                            *
-* Applied artifact patches:                                          *
-*  - APIKIT-2576-1.3.7-1.3.9-2.0.jar                                 *
-*  - APIKIT-2612-1.0.0-1.0.2-1.1.0-1.0.jar                           *
-*  - APIKIT-2612-1.1.1-1.0.jar                                       *
-*  - APIKIT-2612-1.1.11-1.0.jar                                      *
-*  - APIKIT-2612-1.1.12-1.2.0-1.2.2-1.0.jar                          *
-*  - APIKIT-2612-1.1.13-1.1.14-1.2.3-1.2.4-1.0.jar                   *
-*  - APIKIT-2612-1.1.15-1.1.16-1.0.jar                               *
-*  - APIKIT-2612-1.1.2-1.0.jar                                       *
-*  - APIKIT-2612-1.1.3-1.0.jar                                       *
-*  - APIKIT-2612-1.1.4-1.0.jar                                       *
-*  - APIKIT-2612-1.1.5-1.1.6-1.0.jar                                 *
-*  - APIKIT-2612-1.1.7-1.0.jar                                       *
-*  - APIKIT-2612-1.1.8-1.1.10-1.0.jar                                *
-*  - APIKIT-2612-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2612-1.3.0-1.0.jar                                       *
-*  - APIKIT-2612-1.3.5-1.3.9-1.0.jar                                 *
-*  - APIKIT-2613-1.2.0-1.2.1-1.0.jar                                 *
-*  - APIKIT-2613-1.2.2-1.0.jar                                       *
-*  - APIKIT-2613-1.2.3-1.2.4-1.3.0-1.0.jar                           *
-*  - APIKIT-2613-1.2.5-1.3.1-1.3.4-1.0.jar                           *
-*  - APIKIT-2613-1.3.5-1.3.6-1.0.jar                                 *
-*  - APIKIT-2613-1.3.7-1.3.8-1.0.jar                                 *
-*  - APIKIT-2613-1.3.9-1.0.jar                                       *
-*  - MULE-17706-1.1.1-1.1.2-1.0.jar                                  *
-*  - MULE-17706-1.2.0-1.0.jar                                        *
-*  - MULE-17706-1.2.1-1.2.2-1.0.jar                                  *
-*  - MULE-17706-1.2.3-1.0.jar                                        *
-*  - MULE-17706-1.3.0-1.3.1-1.0.jar                                  *
-*  - MULE-17706-1.3.2-1.3.3-1.0.jar                                  *
-*  - MULE-17706-1.3.4-1.0.jar                                        *
-*  - MULE-17706-1.4.0-1.0.jar                                        *
-*  - MULE-17706-1.4.1-1.4.3-1.0.jar                                  *
-*  - MULE-17706-1.5.0-1.5.6-1.0.jar                                  *
-*  - MULE-17706-1.5.10-1.5.11-1.0.jar                                *
-*  - MULE-17706-1.5.7-1.5.9-1.0.jar                                  *
-*  - MULE-18457-1.1.1-1.0.jar                                        *
-*  - MULE-18457-1.2.0-1.2.1-1.0.jar                                  *
-*  - MULE-18457-1.3.0-1.0.jar                                        *
-*  - MULE-18457-1.3.1-1.0.jar                                        *
-*  - MULE-18457-1.3.2-1.0.jar                                        *
-*  - MULE-18457-1.3.3-1.0.jar                                        *
-*  - MULE-18900-1.4.0-1.0.jar                                        *
-*  - SE-12551-1.0.0-1.0.1-1.0.jar                                    *
-*  - SE-12551-1.1.0-1.1.15-2.0.jar                                   *
-*  - SE-12551-1.2.0-1.3.0-1.0.jar                                    *
-*  - SE-12551-1.3.1-1.3.4-1.0.jar                                    *
-*  - SE-12562-1.0.0-1.5.5-1.0.jar                                    *
-*  - SE-17198-1.0.jar                                                *
-* Mule system properties:                                            *
-*  - mule.metadata.cache.expirationInterval.millis = 5000            *
-*  - mule.base = C:\MuleRuntime\laniak server                        *
-*  - mule.home = C:\MuleRuntime\laniak server                        *
-*  - mule.metadata.cache.entryTtl.minutes = 10                       *
-**********************************************************************
-
-**********************************************************************
-* Cluster configuration                                              *
-*                                                                    *
-* Cluster mode disabled                                              *
-**********************************************************************
-
-**********************************************************************
-* Started domain 'default'                                           *
-**********************************************************************
-WARN  2022-06-26 11:15:59,909 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'Database' contains a local package 'javax.transaction', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 11:15:59,911 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'MongoDB' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 11:15:59,917 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.w3c.dom.html', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 11:15:59,917 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.security', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 11:15:59,917 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation.sql', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 11:15:59,917 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'javax.annotation', but it will be ignored since it is already available from the container.
-WARN  2022-06-26 11:15:59,918 [WrapperListener_start_runner] [processor: ; event: ] org.mule.runtime.deployment.model.internal.DefaultRegionPluginClassLoadersFactory: Plugin 'APIKit' contains a local package 'org.apache.commons.logging', but it will be ignored since it is already available from the container.
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ New app 'laniak-core-api'                                                    +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Initializing app 'laniak-core-api'                                           +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**********************************************************************
-* Started DefaultSchedulerService                                    *
-*                                                                    *
-* Resolved configuration values:                                     *
-*                                                                    *
-* Pooling strategy:       UBER                                       *
-* gracefulShutdownTimeout:       15000 ms                            *
-* uber.threadPool.maxSize:         54                                *
-* uber.threadPool.threadKeepAlive: 30000 ms                          *
-*                                                                    *
-* These can be modified by editing 'conf/scheduler-pools.conf'       *
-**********************************************************************
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Starting app 'laniak-core-api'                                               +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**********************************************************************
-* Started app 'laniak-core-api'                                      *
-* Application plugins:                                               *
-*  - Database : 1.10.3                                               *
-*  - MongoDB : 6.3.3                                                 *
-*  - Sockets : 1.2.1                                                 *
-*  - HTTP : 1.5.25                                                   *
-*  - APIKit : 1.5.3                                                  *
-* Application libraries:                                             *
-*  - postgresql-42.2.23.jar                                          *
-*  - checker-qual-3.5.0.jar                                          *
-*  - mongo-java-driver-3.12.10.jar                                   *
-*  - v2-1.0.8-raml.zip                                               *
-*  - generic_message_responses-1.0.1-raml-fragment.zip               *
-**********************************************************************
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Mule is up and kicking (every 5000ms)                                        +
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-**********************************************************************
-*              - - + DOMAIN + - -               * - - + STATUS + - - *
-**********************************************************************
-* default                                       * DEPLOYED           *
-**********************************************************************
-
-*******************************************************************************************************
-*            - - + APPLICATION + - -            *       - - + DOMAIN + - -       * - - + STATUS + - - *
-*******************************************************************************************************
-* laniak-core-api                               * default                        * DEPLOYED           *
+* laniak-core-api-4-2-2                         * default                        * DEPLOYED           *
 *******************************************************************************************************
 

@@ -12,5 +12,5 @@ set REALPATH=%~dp0
 set BASE_DIR=%REALPATH:~0,-5%
 
 IF NOT EXIST "%BASE_DIR%\tools" mkdir "%BASE_DIR%\tools"
-IF EXIST "%BASE_DIR%\bin\agent-setup-2.4.14-amc-final.jar" move "%BASE_DIR%\bin\agent-setup-2.4.14-amc-final.jar" "%BASE_DIR%\tools"
-java -jar "%BASE_DIR%\tools\agent-setup-2.4.14-amc-final.jar" %*
+IF EXIST "%BASE_DIR%\bin\agent-setup-2.4.3-amc-final.jar" move "%BASE_DIR%\bin\agent-setup-2.4.3-amc-final.jar" "%BASE_DIR%\tools"
+java -jar "%BASE_DIR%\tools\agent-setup-2.4.3-amc-final.jar" %*

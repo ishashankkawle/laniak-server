@@ -23,7 +23,7 @@ then
     exit 1
 fi
 
-groovyJar=`ls "$MULE_HOME"/lib/launcher/groovy*`
+groovyJar=`ls "$MULE_HOME"/lib/launcher/groovy-all*`
 commonsCliJar=`ls "$MULE_HOME"/lib/boot/commons-cli-*.jar`
 
 cp=.:$MULE_HOME/conf:$groovyJar:$commonsCliJar

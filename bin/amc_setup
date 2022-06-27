@@ -64,8 +64,8 @@ then
     mkdir "$BASE_DIR/tools"
 fi
 
-if [ -f "$BASE_DIR/bin/agent-setup-2.4.14-amc-final.jar" ]
+if [ -f "$BASE_DIR/bin/agent-setup-2.4.3-amc-final.jar" ]
 then
-    mv "$BASE_DIR/bin/agent-setup-2.4.14-amc-final.jar" "$BASE_DIR/tools"
+    mv "$BASE_DIR/bin/agent-setup-2.4.3-amc-final.jar" "$BASE_DIR/tools"
 fi
-java -DagentVersion=2.4.14 -jar "$BASE_DIR/tools/agent-setup-2.4.14-amc-final.jar" $*
+java -DagentVersion=2.4.3 -jar "$BASE_DIR/tools/agent-setup-2.4.3-amc-final.jar" $*
